@@ -57,9 +57,9 @@ The dates have to follow this format:
 ```
 YY-MM-DD
 ```
-* But at the moment you can run't directly using the MainHanddle.py file, because there when you try to run it, it raises a problem with the date formats.
+* But at the moment you can run't directly using the MainHanddle.py file, because when you try to run it, it raises a problem with the date formats.
 
-* But using it doing all the process that MainHanddler.py is supposed to do on a Jupyter Notebook works perfectly fine.
+* But doing all the process that MainHanddler.py is supposed to do on a Jupyter Notebook works perfectly fine.
 * That's why in DEMO.ipynb you can look at how you can use this repository.
 
 * But we're still looking how to fix the Date format issue.
