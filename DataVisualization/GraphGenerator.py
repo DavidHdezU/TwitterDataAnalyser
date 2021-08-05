@@ -8,31 +8,31 @@ import seaborn as sns
 
 class GraphGenerator():
     """
-    Una clase para generar gráficas que se necesiten para visualizar de mejor manera el analisis hecho
+    A class that generates graphs to visualize data
     """
-    def genera_wordcloud(self, dicc_frecuencia):
+    def create_wordcloud(self, freq_dicc):
         """
-        Método que genera un wordcloud mediante un diccionario de frecuencias
+        Creates a world cloud given a frequency dictionary
 
         Args:
-            dicc_frecuencia (Diccionario): Diccionario de frecuecias
+            freq_dicc (Dictionary): frequency dictionary
         """
-        wc = WordCloud(background_color="black",width=1000,height=1000,relative_scaling=0.5,normalize_plurals=False).generate_from_frequencies(dicc_frecuencia)
+        wc = WordCloud(background_color="black",width=1000,height=1000,relative_scaling=0.5,normalize_plurals=False).generate_from_frequencies(freq_dicc)
         plt.figure()
         plt.imshow(wc, interpolation="bilinear")
         plt.axis("off")
         plt.show()
         
-    def genera_grafica_barras(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
+    def create_graph_bar(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
         """
-        Método que genera una gráfica de barras
+        Creates a graph bar
 
         Args:
-            x_label_list ([Lista]): Variable independiente
-            y_label_list ([Lista]): Variable dependinete
-            title (String): Titulo de la gráfica
-            xlabel_title (String): Nombre de la variable independiente
-            ylabel_title (String): Nombre de la variable dependiente
+            x_label_list ([List]): Independent variable
+            y_label_list ([List]): Dependent variable
+            title (String): Graph title
+            xlabel_title (String): Independent variable name
+            ylabel_title (String): Dependent variable name
         """
         plt.figure(figsize=(20, 10))
         plt.title(title)
@@ -41,16 +41,16 @@ class GraphGenerator():
         plt.ylabel(ylabel_title, fontsize=12)
         plt.show()
         
-    def genera_grafica_linea(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
+    def plot_line(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
         """
-        Método que genera una gráfica de linea
+        Plots a line given a set of (x, y) points
 
         Args:
-            x_label_list ([Lista]): Variable independiente
-            y_label_list ([Lista]): Variable dependinete
-            title (String): Titulo de la gráfica
-            xlabel_title (String): Nombre de la variable independiente
-            ylabel_title (String): Nombre de la variable dependiente
+            x_label_list ([List]): Independent variable
+            y_label_list ([List]): Dependent variable
+            title (String): Graph title
+            xlabel_title (String): Independent variable name
+            ylabel_title (String): Dependent variable name
         """
         plt.figure(figsize=(20, 10))
         plt.title(title)
@@ -59,15 +59,15 @@ class GraphGenerator():
         plt.ylabel(ylabel_title)
         plt.show()
         
-    def genera_heatmap(self, data, title, xlabel_title, ylabel_title):
+    def create_heatmap(self, data, title, xlabel_title, ylabel_title):
         """
-        Método que genera un mapa de calor
+        Creates a heatmap
 
         Args:
-            data (DataFrame) : Data a usar
-            title (String): Titulo de la gráfica
-            xlabel_title (String): Nombre de la variable independiente
-            ylabel_title (String): Nombre de la variable dependiente
+            data (DataFrame) : data to use
+            title (String): Graph title
+            xlabel_title (String): Independent variable name
+            ylabel_title (String): Dependent variable name
         """
         plt.figure(figsize=(14,7))
         plt.title(title)
@@ -76,16 +76,16 @@ class GraphGenerator():
         plt.ylabel(ylabel_title)
         plt.show()
         
-    def genera_grafica_puntos(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
+    def plot_points(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
         """
         Método que gráfica un conjunto de puntos
 
         Args:
-            x_label_list ([Lista]): Variable independiente
-            y_label_list ([Lista]): Variable dependiente
-            title (String): Titulo de la gráfica
-            xlabel_title (String): Nombre de la variable independiente
-            ylabel_title (String): Nombre de la variable dependiente
+            x_label_list ([List]): Independent variable
+            y_label_list ([List]): Dependent variable
+            title (String): Graph title
+            xlabel_title (String): Independent variable name
+            ylabel_title (String): Dependent variable name
         """
         plt.figure(figsize=(20,10))
         plt.title(title)
@@ -94,16 +94,16 @@ class GraphGenerator():
         plt.ylabel(ylabel_title)
         plt.show()
         
-    def genera_regression_line(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
+    def plot_regression_line(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
         """
-        Método que genera una linea de regresión dado un conjunto de puntos
+        Plots a regression line given a set of (x, y) points
 
         Args:
-            x_label_list ([Lista]): Variable independiente
-            y_label_list ([Lista]): Variable dependinete
-            title (String): Titulo de la gráfica
-            xlabel_title (String): Nombre de la variable independiente
-            ylabel_title (String): Nombre de la variable dependiente
+            x_label_list ([List]): Independent variable
+            y_label_list ([List]): Dependent variable
+            title (String): Graph title
+            xlabel_title (String): Independent variable name
+            ylabel_title (String): Dependent variable name
         """
         plt.figure(figsize=(20,10))
         plt.title(title)
@@ -112,17 +112,17 @@ class GraphGenerator():
         plt.ylabel(ylabel_title)
         plt.show()
         
-    def genera_grafica_puntos_3Variables(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title, hue):
+    def plot_points_3Variables(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title, hue):
         """
-        Método que genera una gráfica de puntos, dado 3 variables
+        Plots a set points given 3 variables
 
         Args:
-            x_label_list ([Lista]): Variable independiente
-            y_label_list ([Lista]): Variable dependinete
-            title (String): Titulo de la gráfica
-            xlabel_title (String): Nombre de la variable independiente
-            ylabel_title (String): Nombre de la variable dependiente
-            hue (List): Tercera variable
+            x_label_list ([List]): Independent variable
+            y_label_list ([List]): Dependent variable
+            title (String): Graph title
+            xlabel_title (String): Independent variable name
+            ylabel_title (String): Dependent variable name
+            hue (List): hue List
         """
         plt.figure(figsize=(20,10))
         plt.title(title)
@@ -131,16 +131,16 @@ class GraphGenerator():
         plt.ylabel(ylabel_title)
         plt.show()
         
-    def genera_grafica_categorica(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
+    def create_categorical_graph(self, x_label_list, y_label_list, title, xlabel_title, ylabel_title):
         """
-        Método que genera una gráfica categorica
+        Creates a categorical graph
 
         Args:
-            x_label_list ([Lista]): Variable independiente
-            y_label_list ([Lista]): Variable dependinete
-            title (String): Titulo de la gráfica
-            xlabel_title (String): Nombre de la variable independiente
-            ylabel_title (String): Nombre de la variable dependiente
+            x_label_list ([List]): Independent variable
+            y_label_list ([List]): Dependent variable
+            title (String): Graph title
+            xlabel_title (String): Independent variable name
+            ylabel_title (String): Dependent variable name
         """
         plt.figure(figsize=(20,10))
         plt.title(title)
@@ -149,12 +149,12 @@ class GraphGenerator():
         plt.ylabel(ylabel_title)
         plt.show()
         
-    def genera_grafica_histograma(self, data):
+    def create_histogram(self, data):
         """
-        Método que genera un histograma dado un conjunto de datos
+        Creates a histogram given a data set
 
         Args:
-            data (List): Conjunto de datos a usar
+            data (List): Data set
         """
         plt.figure(figsize=(20,10))
         sns.distplot(a=data, kde=False)

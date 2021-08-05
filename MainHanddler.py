@@ -23,7 +23,7 @@ USE += "cp flag is for getting 'all data that matters' from all posts in the giv
 
 class Main():
     def __init__(self, args, upload_to_sheets):
-        if len(args) == 1 or len(args) <= 4 or len(args) > 7:
+        if len(args) == 1 or len(args) < 5 or len(args) > 6:
             print(USE)
             sys.exit(-1)
         self.upload_to_sheets = upload_to_sheets
@@ -37,43 +37,7 @@ class Main():
         self.nlp = NLP()
         
     
-    def merge_dfs(self, df_list):
-        """
-        Returns a merged Data Frame
-
-        Args:
-            df_list (List): Data Frames list
-
-        Returns:
-            [pd.DataFrame]: DataFrame merged
-        """
-        df = pd.concat(df_list, ignore_index=True, sort=False)
-        return df
         
-    
-    def twint_loop(self, searchterm, start, end):
-        """
-        Fetchs comments and/or posts day by day, given a range
-
-        Args:
-            searchterm (String): User to search
-            start (String): Start date
-            end (String): End date
-
-        Returns:
-            [List]: List of replies/posts Data Frames
-        """
-        daterange = pd.date_range(start, end)
-        df_list = []
-        for start_date in daterange:    
-            since= start_date.strftime("%Y-%m-%d")
-            until = (start_date + timedelta(days=1)).strftime("%Y-%m-%d")
-            print('Getting %s ' % since )
-            df = self.scrapper.search_replies_to(searchterm, since, until, False, "")
-            print(type(df['conversation_id'][0]))
-
-            df_list.append(df)
-        return df_list
         
     def main(self):
         """
@@ -128,23 +92,6 @@ class Main():
                 print("The script ran in:")
                 print(datetime.datetime.now() - begin_time)
                 
-        elif len(self.args) == 7:
-            user_name = self.args[3]
-            start_date = self.args[4]
-            end_date = self.args[5]
-            csv_name = self.args[6]
-            if self.args[2] == "c": 
-                if self.args[1] == "r":
-                    self.scrapper.search_replies_to("@"+user_name, start_date, end_date, csv_name + ".csv")
-                    df = pd.read_csv(csv_name+".csv")
-                    self.scrapper.clean_df(df).to_csv(csv_name+"_clean.csv")
-                elif self.args[1] == "p":
-                    self.scrapper.search_user_posts(user_name, start_date, end_date, csv_name + ".csv")
-                    df = pd.read_csv(csv_name+".csv")
-                    self.scrapper.clean_df(df).to_csv(csv_name + "_clean.csv")
-            else:
-                print(USE)
-                sys.exit(-1)
                 
              
                 

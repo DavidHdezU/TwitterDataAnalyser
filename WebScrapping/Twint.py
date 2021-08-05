@@ -38,6 +38,8 @@ class TwintScrapper():
         self.nombre_hombres = set()
         for s in list_hombres:
             self.nombre_hombres.add(unidecode(s.lower()))
+            
+            
         
     def classify_text(self, text):
         """
@@ -67,6 +69,9 @@ class TwintScrapper():
             return "Neutral"
         
         return "Negative"
+    
+    
+    
     
     def classify_gender(self, name):
         """
@@ -103,6 +108,9 @@ class TwintScrapper():
         return g
     
         
+        
+        
+        
     def search_replies_to(self, user, since, until, save_file, out_file):
         """
         Gets the replies to a user in a given range of time
@@ -134,6 +142,8 @@ class TwintScrapper():
         return twint.storage.panda.Tweets_df[["conversation_id",  "tweet", "name"]]
         
         
+        
+        
     def search_user_posts(self, user, since, until, save_file):
         """
         Gets the user's post in a given range of time
@@ -161,6 +171,8 @@ class TwintScrapper():
         return twint.storage.panda.Tweets_df[["id", "conversation_id", "date", "tweet", "nretweets", "nlikes", "nreplies"]]
         
         
+        
+        
     def clean_tweet(self, text):
         """
         Auxiliary method to remove url, mentions and hashtags
@@ -176,6 +188,9 @@ class TwintScrapper():
         text =re.sub(r'\#\w+','',text) #remove hashtags
         return text
     
+    
+    
+    
     def clean_df_replies(self, df):
         """
         Method to get the data we care about in the replies Data Frame
@@ -189,6 +204,9 @@ class TwintScrapper():
         df['name'] = df['name'].replace(np.nan, "")
         df['gender'] = df['name'].apply(lambda s :self.classify_gender(s))
         df['sentiment'] = df['tweet'].apply(lambda s : self.classify_text(s))
+    
+    
+    
     
     
     def clean_df_posts(self, df_posts, df_replies):
