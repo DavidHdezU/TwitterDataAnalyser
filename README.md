@@ -5,7 +5,7 @@
 [![forthebadge made-with-python](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/)  	
 
 # About
-A Twitter Data Analyzer that fecths user posts and posts comments to do some analysis like Sentiment Analysis and Data Vizualisation
+A Twitter Data Analyzer that fetchs user posts and posts comments to do some analysis like Sentiment Analysis and Data Vizualisation
 
 This is project aims to analyze Twitter data such as posts and posts replies, it show things like most common words used in replies to an user, most mentioned organizations, data sentiment analysis, compare users data.
 
